@@ -1,0 +1,38 @@
+Callie
+-------
+
+@ Anand Gupta, 2012
+
+A Google Talk Robot in touch with Google Calendar
+
+Install 
+-------
+
+Anne uses bundler to get her deps. 
+Use 'bundle install' to set things up.
+
+You'll need to provide Gtalk credentials for Callie:
+
+Fill in: 
+botUsername = ''
+botPassword = ''
+
+Callie also needs your Google Calendar API key before you can use her.
+Check out http://developer.google.com
+
+apiKey      = ''
+apiSecret   = ''
+oauthToken  = ''
+oauthSecret = '' 
+
+in bot/mcore.rb
+
+You can customise Anne's behavior in callie.rb
+
+Run
+---
+
+Just execute run.sh
+
+If you peek inside run.sh, you'll see that all it does is bundle exec, making
+Anne something perfectly suitable for use on Heroku. 
