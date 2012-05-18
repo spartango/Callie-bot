@@ -11,11 +11,9 @@ log.level = Logger::DEBUG
 
 # Login info
 apiKey      = ''
-apiSecret   = ''
-oauthToken  = ''
-oauthSecret = '' 
 
-callie = Bot::Callie.new(apiKey, apiSecret, oauthToken, oauthSecret)
+
+callie = Bot::Callie.new()
 
 setup botUsername, botPassword, 'talk.google.com', 5222
 

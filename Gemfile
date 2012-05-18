@@ -1,5 +1,5 @@
 source :rubygems
 
 gem 'blather'
-gem 'gcal-ruby'
+gem 'google-api-client'
 gem 'amatch'

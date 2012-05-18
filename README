@@ -20,13 +20,6 @@ botPassword = ''
 Callie also needs your Google Calendar API key before you can use her.
 Check out http://developer.google.com
 
-apiKey      = ''
-apiSecret   = ''
-oauthToken  = ''
-oauthSecret = '' 
-
-in bot/mcore.rb
-
 You can customise Anne's behavior in callie.rb
 
 Run
