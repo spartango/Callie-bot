@@ -1,26 +1,16 @@
 require 'logger'
 require 'blather/stanza/message'
+
 require 'rubygems'
-require 'google/api_client'
-require 'yaml'
+require 'google_calendar'
 
 module Bot
     class Callie 
-        def initialize()
-
-            oauth_yaml = YAML.load_file('google-api.yaml')
-            @client = Google::APIClient.new
-            client.authorization.client_id = oauth_yaml["client_id"]
-            client.authorization.client_secret = oauth_yaml["client_secret"]
-            client.authorization.scope = oauth_yaml["scope"]
-            client.authorization.refresh_token = oauth_yaml["refresh_token"]
-            client.authorization.access_token = oauth_yaml["access_token"]
-
-            if client.authorization.refresh_token && client.authorization.expired?
-              client.authorization.fetch_access_token!
-            end
-
-            @service = client.discovered_api('calendar', 'v3')
+        def initialize(calUsername, calPassword)
+            @cal = Google::Calendar.new(:username => calUsername,
+                                        :password => calPassword,
+                                        :app_name => 'Callie-bot')
+            
             @log       = Logger.new(STDOUT)
             @log.level = Logger::DEBUG
         end
@@ -46,13 +36,13 @@ module Bot
             # Listing
                         
             if queryText.match /thank/i
-                return [(buildMessage message.from.stripped, "Callie: No problem, "+senderName)]
+                return [(buildMessage message.from.stripped, "No problem, "+senderName)]
             
             elsif queryText.match /hi/i or queryText.match /hello/i or queryText.match /hey/i
-                return [(buildMessage message.from.stripped, "Callie: Hello, "+senderName)]
+                return [(buildMessage message.from.stripped, "Hello, "+senderName)]
             end  
             # Default / Give up
-            return [(buildMessage message.from.stripped, "Callie: Sorry? Is there a way I can help?")]
+            return [(buildMessage message.from.stripped, "Sorry? Is there a way I can help?")]
         end
 
         def onMessage(message, &onProgress)

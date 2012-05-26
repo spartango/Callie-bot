@@ -10,10 +10,13 @@ log       = Logger.new(STDOUT)
 log.level = Logger::DEBUG
 
 # Login info
-apiKey      = ''
+botUsername = ''
+botPassword = ''
 
+calUsername = '' 
+calPassword = ''
 
-callie = Bot::Callie.new()
+callie = Bot::Callie.new(calUsername, calPassword)
 
 setup botUsername, botPassword, 'talk.google.com', 5222
 
